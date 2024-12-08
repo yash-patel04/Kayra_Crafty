@@ -1,0 +1,202 @@
+.admin-panel {
+  padding-top: 20px;
+  padding-left: 270px;
+  /* padding: 20px; */
+  font-family: Arial, sans-serif;
+}
+
+/* Styling for the product selection dropdown */
+.product-selection {
+  margin-bottom: 20px;
+}
+
+.product-selection label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.product-selection select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Product details and cards container */
+.product-details {
+  margin-top: 20px;
+}
+
+.cards-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.adminCardImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  color: #007bff;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.card h3:hover {
+  text-decoration: underline;
+}
+
+.card p {
+  margin: 5px 0;
+}
+
+.card button {
+  margin: 5px 5px 0 0;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Styling for the product form */
+.product-form {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.product-form input,
+.product-form textarea,
+.product-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.product-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.product-form input[type="file"] {
+  padding: 5px;
+}
+
+.submit-button {
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+/* Responsive Layouts */
+@media (max-width: 576px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff; /* Bootstrap primary color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:active {
+  background-color: #004085; /* Even darker blue for active effect */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus ring for accessibility */
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between; /* Distribute buttons to opposite sides */
+  align-items: center; /* Align buttons vertically */
+}

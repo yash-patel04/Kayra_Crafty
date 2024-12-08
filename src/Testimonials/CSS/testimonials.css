@@ -1,0 +1,154 @@
+.carousel-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.swiper {
+  max-width: 900px;
+  height: auto;
+  max-height: 370px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  height: auto;
+  max-height: 370px;
+}
+
+.swiper-slide {
+  width: 300px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pagination bullet styling */
+.swiper-pagination {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  width: 15px;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.swiper {
+  --swiper-pagination-color: black;
+  --swiper-pagination-bullet-inactive-color: rgb(138, 130, 130);
+}
+
+.button-next,
+.button-prev {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: black;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+:is(.button-next, .button-prev):hover {
+  background-color: black;
+}
+
+.button-next {
+  right: 10px;
+}
+.button-prev {
+  left: 10px;
+}
+
+.testimonials-heading {
+  margin-top: 50px;
+  text-align: center;
+  font-size: calc(2.1rem + 1.5vw);
+}
+
+.testimonial-card {
+  width: 300px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  height:350px;
+  justify-content: space-evenly;
+}
+
+.testimonial-content {
+  padding: 0px 16px;
+}
+
+.profile-name {
+  font-size: calc(1.2rem + 1vw);
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.rating {
+  font-size: calc(0.1rem + 1vw);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ceac23;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  margin-left: 3px;
+}
+
+.t-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  font-size: calc(0.1rem + 1vw);
+  letter-spacing: 1px;
+  color: white;
+}
+
+.description {
+  font-size: calc(0.5rem + 1vw);
+  letter-spacing: 1px;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimonials-heading {
+    font-size: calc(2rem + 1.5vw);
+  }
+
+  .profile-name {
+    font-size: calc(1.5rem + 1.5vw);
+  }
+
+  .date,
+  .rating{
+    font-size: calc(0.4rem + 1.5vw);
+  }
+
+  .description {
+    font-size: calc(0.6rem + 1.5vw);
+  }
+}

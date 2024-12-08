@@ -1,0 +1,58 @@
+.admin-navbar {
+    position: fixed; /* Makes the navbar stay in place, even when scrolling */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #ecf0f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures the navbar stays above other elements */
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-image {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar-actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .restore-btn,
+  .logout-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .restore-btn {
+    background-color: #27ae60;
+    color: #ffffff;
+  }
+  
+  .restore-btn:hover {
+    background-color: #2ecc71;
+  }
+  
+  .logout-btn {
+    background-color: #c0392b;
+    color: #ffffff;
+  }
+  
+  .logout-btn:hover {
+    background-color: #e74c3c;
+  }
+  

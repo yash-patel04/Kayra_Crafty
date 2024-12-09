@@ -9,14 +9,13 @@ import "./CSS/testimonials.css";
 
 import arrowLeft from "../assets/photos/arrow-left.svg";
 import arrowRight from "../assets/photos/arrow-right.svg";
-import { FcRatings } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
 
 function Testimonials() {
   const [content, setContent] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/testimonials/get")
+    fetch(`${process.env.REACT_APP_TESTIMONIALS}/get`)
       .then((res) => res.json())
       .then((res) => setContent(res.testimonials));
   }, []);

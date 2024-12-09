@@ -10,13 +10,14 @@
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   position: fixed;
+  transition: transform 0.3s ease;
 }
 
 /* Sidebar title */
 .sidebar h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ff6b6b;
+  color: #fff;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -108,7 +109,7 @@ ul {
 }
 
 /* Modal overlay */
-.modal {
+.sidebar-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -118,24 +119,28 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-
   z-index: 1000;
 }
 
 /* Modal content */
-.modal-content {
+.sidebar-modal-content {
   background-color: #fff;
   color: #333;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
   width: 300px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.sidebar-modal-content h2 {
+  color: #000;
 }
 
 /* Confirmation buttons */
 .confirm-btn,
 .cancel-bttn {
+  width: 100%;
   padding: 10px 20px;
   font-size: 1rem;
   border: none;
@@ -143,22 +148,162 @@ ul {
   cursor: pointer;
   margin: 5px;
   flex-direction: column;
+  align-items: center;
+  color: white;
 }
 
 .confirm-btn {
-  background-color: #ff6b6b;
-  color: white;
+  margin-top: 20px;
+  background-color: #28a745;
 }
 
 .confirm-btn:hover {
-  background-color: #ff4d4d;
-}
-
-.cancel-bttn {
-  background-color: #888;
+  background-color: #218838;
   color: white;
 }
 
+.cancel-bttn {
+  background-color: #ff6b6b;
+}
+
 .cancel-bttn:hover {
-  background-color: #666;
+  background-color: rgb(218, 7, 7);
+  color: white;
+}
+
+/* Add Art Button */
+.add-art-button {
+  width: 100%;
+  background-color: #797878;
+  align-items: center;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 1.2rem;
+  &:hover {
+    background-color: rgb(22, 22, 22);
+  }
+}
+
+/* Accordion Wrapper */
+.accordion {
+  border: 1px solid #333;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  background-color: #333;
+}
+
+/* Accordion Header */
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.accordion-header h2{
+  margin: 0;
+}
+
+/* Accordion Icon */
+.accordion-icon {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.accordion-icon.open {
+  transform: rotateX(180deg);
+  transform-origin: center center; 
+}
+
+/* Accordion Content */
+.accordion-content {
+  padding: 10px 15px;
+  background-color: #333;
+  animation: slideDown 0.3s ease;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* List Items */
+.art-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.art-item:hover {
+  background-color: #222222;
+  color: #fff;
+}
+
+/* Slide Down Animation */
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+.art-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add hover effect */
+.art-input:hover {
+  border-color: #333;
+}
+
+/* Add focus effect */
+.art-input:focus {
+  border-color: #333;
+  box-shadow: 0 0 5px #333;
+}
+
+/* Placeholder text styling */
+.art-input::placeholder {
+  color: #807e7e;
+  font-style: italic;
+}
+
+.testimonial{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.testimonial h2{
+  margin: 0;
+}
+
+.add-testimonials-button{
+  background-color: #333;
+  align-items: center;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }

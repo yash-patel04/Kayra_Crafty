@@ -7,7 +7,7 @@ const Home = () => {
   const [arts, setArts] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/crafts/get")
+    fetch(`${process.env.REACT_APP_API}/get`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res.crafts)

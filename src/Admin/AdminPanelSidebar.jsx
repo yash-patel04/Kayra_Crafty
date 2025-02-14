@@ -150,8 +150,9 @@
 
 import React, { useEffect, useState } from "react";
 import "./CSS/AdminPanelSidebar.css";
-import { FaTrash } from "react-icons/fa";
-import { MdOutlineExpandMore,MdOutlineExpandLess } from "react-icons/md";
+import { FaTrash, FaEdit } from "react-icons/fa";
+import { MdOutlineExpandMore } from "react-icons/md";
+import { CiSaveUp1 } from "react-icons/ci";
 
 const AdminPanelSidebar = ({ onSelectArt }) => {
   const [arts, setArts] = useState([]);
@@ -161,6 +162,8 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
   const [showAddArtModal, setShowAddArtModal] = useState(false);
   const [showAddTestimonialModal, setShowAddTestimonialModal] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const [handleApi, setHandleApi] = useState(false);
+  const [isEditable, setIsEditable] = useState(true);
 
   useEffect(() => {
     // Fetch arts
@@ -174,7 +177,7 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
       .then((res) => res.json())
       .then((data) => setTestimonials(data.testimonials))
       .catch((error) => console.error("Error fetching testimonials:", error));
-  }, []);
+  }, [handleApi]);
 
   // Add new art
   const addNewArt = async () => {
@@ -189,6 +192,7 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
         setArts([...arts, newArt]);
         setShowAddArtModal(false);
         setNewArtName("");
+        setHandleApi(!handleApi);
       }
     } catch (error) {
       console.error("Error adding art:", error);
@@ -211,9 +215,71 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
         setTestimonials([...testimonials, newTest]);
         setShowAddTestimonialModal(false);
         setNewTestimonial("");
+        setHandleApi(!handleApi);
       }
     } catch (error) {
       console.error("Error adding testimonial:", error);
+    }
+  };
+
+  const onSave = async (art) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API}/update/${art._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ type: newArtName }),
+        }
+      );
+      if (response.ok) {
+        setHandleApi(!handleApi);
+        setNewArtName("");
+        setIsEditable(!isEditable);
+      }
+    } catch (error) {
+      console.error("Error updating art:", error.message);
+    }
+  };
+
+  const onEditArt = async (art) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API}/get/${art._id}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch art: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (data?.crafts) {
+        setArts(data.crafts);
+        setHandleApi(!handleApi);
+        setIsEditable(!isEditable);
+      } else {
+        throw new Error("No crafts data found in the response.");
+      }
+    } catch (error) {
+      console.error("Error editing art:", error.message);
+    }
+  };
+  const onDeleteArt = async (art) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API}/delete/${art._id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        setHandleApi(!handleApi);
+      } else {
+        console.error("Error deleting art:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting art:", error);
     }
   };
 
@@ -226,19 +292,54 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
         >
           <h2>Arts</h2>
           <span className={`accordion-icon ${isAccordionOpen ? "open" : ""}`}>
-            {isAccordionOpen ? <MdOutlineExpandMore /> : <MdOutlineExpandMore />}
+            {isAccordionOpen ? (
+              <MdOutlineExpandMore />
+            ) : (
+              <MdOutlineExpandMore />
+            )}
           </span>
         </div>
         {isAccordionOpen && (
           <>
             <ul className="accordion-content">
-              {arts.map((art) => (
+              {/* {arts.map((art) => (
                 <li
                   key={art._id}
                   className="art-item"
                   onClick={() => onSelectArt(art)}
                 >
                   {art.type}
+                </li>
+              ))} */}
+              {arts.map((art) => (
+                <li key={art._id} className="art-item">
+                  {isEditable && (
+                    <span onClick={() => onSelectArt(art)}>{art.type}</span>
+                  )}
+                  {!isEditable && (
+                    <input type="text" value={art.type} onChange={() => {}} />
+                  )}
+
+                  {/* Edit Button */}
+                  {isEditable && (
+                    <FaEdit
+                      className="edit-bttn"
+                      onClick={() => onEditArt(art)}
+                    />
+                  )}
+                  {/* Save Button */}
+                  {!isEditable && (
+                    <CiSaveUp1
+                      className="save-bttn"
+                      onClick={() => onSave(art)}
+                    />
+                  )}
+
+                  {/* Delete Button */}
+                  <FaTrash
+                    className="delete-btn"
+                    onClick={() => onDeleteArt(art)}
+                  />
                 </li>
               ))}
             </ul>
@@ -253,8 +354,7 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
       </div>
 
       <div className="testimonial">
-      <h2>Testimonials</h2>
-      <ul>
+        {/* <ul>
         {testimonials.map((testimonial) => (
           <li key={testimonial._id} className="testimonial-item">
             <span>{testimonial.content}</span>
@@ -269,10 +369,13 @@ const AdminPanelSidebar = ({ onSelectArt }) => {
             />
           </li>
         ))}
-      </ul>
-      <button onClick={() => setShowAddTestimonialModal(true)} className="add-testimonials-button">
-        +
-      </button>
+      </ul> */}
+        <button
+          onClick={() => setShowAddTestimonialModal(true)}
+          className="testimonials-button"
+        >
+          Testimonials
+        </button>
       </div>
 
       {/* Add Art Modal */}

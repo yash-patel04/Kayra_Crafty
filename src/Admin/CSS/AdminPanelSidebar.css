@@ -207,8 +207,9 @@ ul {
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
-.accordion-header h2{
+.accordion-header h2 {
   margin: 0;
+  user-select: none;
 }
 
 /* Accordion Icon */
@@ -222,7 +223,7 @@ ul {
 
 .accordion-icon.open {
   transform: rotateX(180deg);
-  transform-origin: center center; 
+  transform-origin: center center;
 }
 
 /* Accordion Content */
@@ -288,17 +289,17 @@ ul {
   font-style: italic;
 }
 
-.testimonial{
+.testimonial {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.testimonial h2{
+.testimonial h2 {
   margin: 0;
 }
 
-.add-testimonials-button{
+.testimonials-button {
   background-color: #333;
   align-items: center;
   color: white;
@@ -306,4 +307,6 @@ ul {
   border-radius: 4px;
   font-size: 1.5rem;
   font-weight: bold;
+  cursor: pointer;
+  user-select: none;
 }
